@@ -8,7 +8,9 @@ import (
 
 func main() {
 	var i interface{}
-	err := json.NewDecoder(os.Stdin).Decode(&i)
+	d := json.NewDecoder(os.Stdin)
+	d.UseNumber()
+	err := d.Decode(&i)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
